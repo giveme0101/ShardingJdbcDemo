@@ -1,0 +1,47 @@
+
+
+server:
+  port: 8080
+
+#datasource
+spring:
+  devtools:
+    remote:
+      restart:
+        enabled: false
+
+  datasource:
+#    username: root
+#    password: root
+#    url: jdbc:mysql://192.168.99.100:3306/sharding_0?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC
+#    driver-class-goodsName: com.mysql.jdbc.Driver
+#    type: com.alibaba.druid.pool.DruidDataSource
+
+  #data source1
+    db0:
+      dbname: sharding_0
+      driverClassName: com.mysql.jdbc.Driver
+      url: jdbc:mysql://192.168.99.100:3306/sharding_0
+      username: root
+      password: root
+
+  #data source2
+    db1:
+      dbname: sharding_1
+      driverClassName: com.mysql.jdbc.Driver
+      url: jdbc:mysql://192.168.99.100:3306/sharding_1
+      username: root
+      password: root
+
+  redis:
+    database: 1
+    host: 192.168.99.100
+    port: 6379
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+
+# 打印sql
+logging:
+  level:
+    com.example.shardingjdbc.dao : debug
